@@ -1,0 +1,22 @@
+using Microsoft.EntityFrameworkCore;
+using wateen12148ArticalProject.Core;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+
+namespace wateen12148ArticalProject.Data.AqlServerEF
+{
+   public class DBContext : DbContext
+    {
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=******;Database=wateen12148ArticalProjectDB;Trusted_Connection=True");
+        }
+        public DbSet<wateen12148ArticalProject.Core.Category> Category { get; set; }
+        public DbSet<Author> Author { get; set; }
+        public DbSet<AuthorPost> AuthorPost { get; set; }
+    }
+    
+}
+// Add-Migration addCategoryTable -Context wateen12148ArticalProject.Data.AqlServerEF.DBContext
